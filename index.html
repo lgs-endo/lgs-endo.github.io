@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+  <head>
+    <style>
+      .centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.2;
+            /* width: 60%; */
+        }
+        .centered img {
+            margin-right: 10px;
+
+        }
+        .left-align {
+            text-align: left;
+            /* width: 60%; */
+        }
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          color: #333;
+          margin: 0;
+          padding: 20px;
+
+      }
+      .paper {
+          margin-bottom: 20px;
+          background-color: #f9f9f9; /* 浅灰色背景 */
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          padding: 20px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          
+      }
+      .new_h3{
+        color: #5c6bc0;
+      }
+      .paper h2 {
+          font-size: 24px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          color: #5c6bc0; /* 柔和的蓝紫色 */
+      }
+      .paper p {
+          font-size: 16px;
+          line-height: 1.5;
+          color: #666; /* 柔和的灰色 */
+      }
+      .paper a {
+          color: #5c6bc0; /* 柔和的蓝紫色 */
+          text-decoration: none;
+          transition: color 0.3s ease;
+      }
+      .paper a:hover {
+          color: #3949ab; /* 柔和的深蓝色 */
+          text-decoration: underline;
+      }
+  </style>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./pic/bitbug_favicon.ico" type="image/x-icon">
+    <title>
+      LGS: A Light-weight 4D Gaussian Splatting for Efficient Surgical Scene Reconstruction
+    </title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.4.1.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/project.css" media="screen" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/iconize.css" />
+    <script src="js/google-code-prettify/prettify.js"></script> -->
+  </head>
+
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            
+            <h2 class="centered">
+              <div>
+                LGS: A Light-weight 4D Gaussian Splatting for 
+                <br> Efficient Surgical Scene Reconstruction
+              </div>
+          </h2>
+            <h4 style="color:#5a6268;"> MICCAI 2024 </h4>
+            <hr>
+            <h6>
+                <a href="https://github.com/LiuHengyu321" target="_blank">Hengyu Liu</a><sup>1*</sup>,
+                <a href="https://yifliu3.github.io/" target="_blank">Yifan Liu</a><sup>1*</sup>,
+                <a href="https://xggnet.github.io/" target="_blank">Chenxin Li</a><sup>1*</sup>,
+                <a href="https://wymancv.github.io/wuyang.github.io/" target="_blank">WuyangLi</a><sup>1*</sup>,
+
+                <a href="http://www.ee.cuhk.edu.hk/~yxyuan/people/people.htm" target="_blank">Yixuan Yuan</a><sup>1†</sup>
+
+              </h6>
+            <p>
+                <sup>1</sup>The Chinese University of Hong Kong &nbsp;&nbsp;
+                <sup>†</sup>Corresponding Author &nbsp;&nbsp;
+            </p>
+
+            <div class="row justify-content-center">
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://lgs-endo.github.io/" role="button"  target="_blank">
+                    <i class="fa fa-file"></i> Paper</a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="https://github.com/CUHK-AIM-Group/LGS" role="button"  target="_blank">
+                    <i class="fa fa-github-alt"></i> Code </a> </p>
+              </div>
+              <div class="column">
+                  <p class="mb-5"><a class="btn btn-large btn-light" href="#bib" role="button"  target="_blank">
+                    <i class="fa fa-database"></i> BibTex </a> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- abstract -->
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Abstract</h3>
+            <hr style="margin-top:0px">
+            <!-- <h6 style="color:#8899a5">  -->
+              <!-- SyncDreamer is able to directly generate multiview consistent images, which allows 3D reconstruction by NeuS or NeRF without SDS loss.  -->
+              <!-- TL;DR:<i>Endora</i> enables the <b>high-fidelity medical video generation</b> on endoscopy scenes and demonstrates the <b>versatile ability through successful applications</b> in video-based disease diagnosis and 3D surgical scene reconstruction. -->
+            <!-- </h6> -->
+
+              <!-- <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                  <source src="video/teaser.mp4" type="video/mp4">
+              </video> -->
+
+
+
+          <p class="text-left">
+
+
+            The advent of 3D Gaussian Splatting (3D-GS) techniques and their dynamic scene modeling variants, 4D-GS, 
+            offers promising prospects for real-time reconstruction of dynamic surgical scenarios. 
+            <br><br>
+            
+            However, the prerequisite for modeling dynamic scenes by a large number of Gaussian units, the high-dimensional Gaussian attributes and the high-resolution deformation fields, 
+            all lead to serve storage issues that hinder real-time reconstruction in resource-limited surgical equipment. 
+            <br><br>
+
+            To surmount these limitations, we introduce a Lightweight 4D Gaussian Splatting framework (LGS) that can liberate the efficiency bottlenecks of both rendering and storage for dynamic endoscopic reconstruction.
+
+            Specifically, to minimize the redundancy of Gaussian quantities, we propose Deformation-Aware Pruning by gauging the impact of each Gaussian on deformation. 
+            Concurrently, to reduce the redundancy of Gaussian attributes, we simplify the representation of textures and lighting in non-crucial areas by pruning the dimensions of Gaussian attributes. 
+            We further resolve the feature field redundancy caused by the high resolution of 4D neural spatiotemporal encoder for modeling dynamic scenes via a 4D feature field condensation. 
+
+            <br><br>
+            Experiments on public benchmarks demonstrate efficacy of LGS in terms of a compression rate exceeding 9$\times$ while maintaining the pleasing visual quality and real-time rendering efficiency.
+
+          
+          </p>
+
+        <p class="text-center">
+          <!-- Reverse process of SyncDreamer's multiview diffusion. -->
+          <!-- Sampled realistic endoscopy videos by <i>Endora</i>.  -->
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h3>Highlight</h3>
+            <hr style="margin-top:0px">
+            <!-- <h6 style="color:#8899a5">  -->
+              <!-- SyncDreamer is able to directly generate multiview consistent images, which allows 3D reconstruction by NeuS or NeRF without SDS loss.  -->
+              <!-- TL;DR:<i>Endora</i> enables the <b>high-fidelity medical video generation</b> on endoscopy scenes and demonstrates the <b>versatile ability through successful applications</b> in video-based disease diagnosis and 3D surgical scene reconstruction. -->
+            <!-- </h6> -->
+
+              <!-- <video width="80%" playsinline="" autoplay="autoplay" loop="loop" preload="" muted="">
+                  <source src="video/teaser.mp4" type="video/mp4">
+              </video> -->
+
+          <p class="text-left">
+            <ul style="list-style-position: inside; text-align: left; margin-left: 0x;">
+              <li>We propose a holistic Lightweight 4D Gaussian Splatting (LGS) framework that allows for achieving satisfactory endoscopic reconstruction with both efficient rendering and storing. </li>
+              
+              <li>
+                We present a Deformation-Aware Pruning (DAP) which alleviates the Quantity burden of Gaussian representation.
+              </li>
+             
+              <li>
+                We propose a Gaussian-Attribute Pruning (GAP), which addresses the High-dimension burden of Gaussian attributes.
+              </li>
+
+              <li>
+                We present Feature Field Condensation (FFC) which mitigates the High-resolution burden of spatial-temporal deformable fields.
+              </li>
+
+              <li>
+              Experimental results show that LGS can achieve higher storage efficiency with an over $9\times$ compression rate, whilst maintaining pleasing reconstruction quality and rendering speed.
+              </li>
+
+            </ul>
+         
+          
+          </p>
+
+        <p class="text-center">
+          <!-- Reverse process of SyncDreamer's multiview diffusion. -->
+          <!-- Sampled realistic endoscopy videos by <i>Endora</i>.  -->
+        </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Network</h2>
+            <hr style="margin-top:0px">
+            <!-- <img src="./pic/ppline.jpg" alt="" width="1000" height="400"> -->
+            <img src="./pic/pipeline.png" alt="" width="1000" height="500">
+            <br>
+            <br>
+            <div class="text-left">
+              Overview of LGS:(a) Deformation-Aware Pruning, (b) Gaussian-Attribute Pruning, (c) Feature Field Condensation, and distillation for optimization.
+            <div>
+      </div>
+    </div>
+  </section>
+  <br>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+            <h2>Experimental Results </h2>
+            <hr style="margin-top:0px">
+            <h3 class="new_h3"> Quantitative Results </h3>
+            <img src="./pic/res_1.png" alt="" width="1000" height="650">
+            <hr style="margin-top:0px">
+            <h3 class="new_h3"> Qualitative Results </h3>
+            <img src="./pic/res_2.png" alt="" width="1000" height="450">
+            
+      </div>
+    </div>
+  </section>
+  <br>
+  
+
+  <!-- citing -->
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+          <h3>Citation</h3>
+          <hr style="margin-top:0px">
+              <pre style="background-color: #e9eeef;padding: 1.25em 1.5em">
+<code id="bib">@article{liu2024lgs,
+  author    = {Hengyu Liu and Yifan Liu and Chenxin Li and Wuyang Li and Yixuan Yuan},
+  title     = {LGS: A Light-weight 4D Gaussian Splatting for Efficient Surgical Scene Reconstruction},
+  journal   = {arXiv preprint},
+  year      = {2024}
+}</code>
+              </pre>
+          <hr>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row ">
+      <div class="col-12">
+          <h3>Relevant Works</h3>
+
+          <hr style="margin-top:0px">
+          <div class="paper">
+              <h2><a>EndoGaussian: Real-time Gaussian Splatting for Dynamic Endoscopic Scene Reconstruction</a></h2>
+              <p>An intial exploration into real-time surgincal scene reconstruction built on 3D Gaussian Splatting. </p>
+              <p>
+                <a href="https://yifliu3.github.io/EndoGaussian/">[Page]</a> | <a href="https://arxiv.org/pdf/2401.12561.pdf">[Paper]</a> | <a href="https://github.com/yifliu3/EndoGaussian">[Code]</a>
+              </p>
+          </div>
+
+          <hr style="margin-top:0px">
+          <div class="paper">
+              <h2><a>EndoSparse: Real-Time Sparse View Synthesis of Endoscopic Scenes using Gaussian Splatting</a></h2>
+              <p>A novel framework improves 3D reconstruction of biological tissues from sparse endoscopic images by leveraging multiple foundation models.</p>
+              <p>
+                <a href="https://endo-sparse.github.io/">[Page]</a> | <a href="https://endo-sparse.github.io/">[Paper]</a> | <a href="https://github.com/CUHK-AIM-Group/EndoSparse">[Code]</a>
+              </p>
+          </div>
+
+          <hr style="margin-top:0px">
+          <div class="paper">
+              <h2><a>Endora: Video Generation Models as Endoscopy Simulators</a></h2>
+              <p>A pioneering exploration into high-fidelity medical video generation on endoscopy scenes.</p>
+              <p>
+                <a href="https://endora-medvidgen.github.io/">[Page]</a> | <a href="https://arxiv.org/abs/2403.11050">[Paper]</a> | <a href="https://github.com/XGGNet/Endora">[Code]</a>
+              </p>
+          </div>
+
+          <hr style="margin-top:0px">
+          <div class="paper">
+              <h2><a>U-KAN Makes Strong Backbone for Medical Image Segmentation and Generation</a></h2>
+              <p>An innovative enhancement of U-Net for medical image tasks using Kolmogorov-Arnold Network (KAN).</p>
+              <p>
+                <a href="https://yes-ukan.github.io/">[Page]</a> | <a href="https://arxiv.org/pdf/2406.02918">[Paper]</a> | <a href="https://github.com/CUHK-AIM-Group/U-KAN">[Code]</a>
+              </p>
+          </div>
+
+          
+
+          <!-- <div class="paper">
+              <h2><a>Generator Versus Segmentor: Pseudo-healthy Synthesis</a></h2>
+              <p>
+                A pioneering attempt to recreate and edit medical visual content according to different physiological attributes
+  
+               </p>
+              <p>
+                <a href="https://link.springer.com/content/pdf/10.1007/978-3-030-87231-1_15.pdf">[Paper]</a> | <a href="https://github.com/Au3C2/GVS">[Code]</a>
+              </p>
+          </div> -->
+          
+          <hr>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <footer class="text-center" style="margin-bottom:10px">
+      Modified from <a href="https://lioryariv.github.io/idr/" target="_blank">this website</a>
+  </footer>
+
+</body>
+</html>
